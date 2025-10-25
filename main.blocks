@@ -1,0 +1,22 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="X;K[}q8-a~=.oY6g-2HO">player_1</variable><variable type="KIND_SpriteKind" id="]zsLbLP*Xm;XTA**`!(V">Player</variable><variable type="KIND_SpriteKind" id=",d|{{s19.YjgvX/O=@Ui">Projectile</variable><variable type="KIND_SpriteKind" id="{G([_?d(jF:#z;^QvgG$">Food</variable><variable type="KIND_SpriteKind" id="?5J?0QIZaX.%NUL|/%@@">Enemy</variable></variables><block type="pxt-on-start" id="sH,b@#J_E!cK/;PW?c^E" x="0" y="0"><statement name="HANDLER"><block type="variables_set" id="]kP$|7*TTUf)/57gyZdM"><field name="VAR" id="X;K[}q8-a~=.oY6g-2HO">player_1</field><value name="VALUE"><shadow type="math_number" id="OORhnN6W6~QU*b:p3a0D"><field name="NUM">0</field></shadow><block type="spritescreate" id=",7cYK)IPxRIkk=;4(hCE"><value name="img"><shadow type="screen_image_picker" id="=W@r6L[`b3T}%Rt9I[ik"><field name="img">img`
+.....fffffff.....
+...ff2222222ff...
+..f22222222222f..
+.f222fffffff222f.
+.f22f9991119f22f.
+f22f999991199f22f
+f22f999999919f22f
+f22f999999999f22f
+f22f999999999f22f
+f22f999999999f22f
+f222ff99999ff222f
+f22222fffff22222f
+f222222222222222f
+f222222222222222f
+f222222222222222f
+.f222222f222222f.
+.f222222f222222f.
+.f222222f222222f.
+.f222222f222222f.
+.fffffffffffffff.
+`</field><data>{"commentRefs":[],"fieldData":{"img":null}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="$Yuy6zu;[RtRU#wl~9hO"><field name="MEMBER">Player</field></shadow></value></block></value></block></statement></block></xml>
