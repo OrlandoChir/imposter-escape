@@ -1,8 +1,9 @@
 {
-    "name": "Imposter's Escape",
+    "name": "Imposter's Escape - Copy",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "sprite-scaling": "*"
     },
     "files": [
         "main.blocks",
