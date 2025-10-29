@@ -1,118 +1,29 @@
+@namespace
+class SpriteKind:
+    Dialogue = SpriteKind.create()
+
 def on_up_pressed():
     animation.run_image_animation(player_1,
-        [img("""
-                .....fffffff.....
-                ...ff2222222ff...
-                ..f22222222222f..
-                .f222fffffff222f.
-                .f22f2222222f22f.
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f222ff22222ff222f
-                f22222fffff22222f
-                f222222222222222f
-                .f222222f222222f.
-                .f222222f222222f.
-                .f222222f222222f.
-                .f222222f222222f.
-                .fffffffffffffff.
-                """),
-            img("""
-                .....fffffff.....
-                ...ff2222222ff...
-                ..f22222222222f..
-                .f222fffffff222f.
-                .f22f2222222f22f.
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222ffff22f
-                f22f2222ff2222f2f
-                f222ff22f222222ff
-                f22222fff222222f.
-                f2222222f222222f.
-                .fe2222ef222222f.
-                .feeeeeeff2222f..
-                ..feeeef.fffff...
-                ...ffff..........
-                """),
-            img("""
-                .....fffffff.....
-                ...ff2222222ff...
-                ..f22222222222f..
-                .f222fffffff222f.
-                .f22f2222222f22f.
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f222ff22222ff222f
-                f22222fffff22222f
-                f222222222222222f
-                .f222222f222222f.
-                .f222222f222222f.
-                .f222222f222222f.
-                .f222222f222222f.
-                .fffffffffffffff.
-                """),
-            img("""
-                .....fffffff.....
-                ...ff2222222ff...
-                ..f22222222222f..
-                .f222fffffff222f.
-                .f22f2222222f22f.
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22f222222222f22f
-                f22ffff222222f22f
-                f2f2222ff2222f22f
-                ff222222f22ff222f
-                .f222222fff22222f
-                .f222222f2222222f
-                .f222222fe2222ef.
-                ..f2222ffeeeeeef.
-                ...fffff.feeeef..
-                ..........ffff...
-                """)],
+        assets.animation("""
+            walk_up_animation
+            """),
         200,
         True)
 controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
 
+def on_overlap_tile(sprite, location):
+    tileUtil.load_connected_map(MapConnectionKind.door1)
+    tiles.place_on_random_tile(player_1, tileUtil.door0)
+    if tileUtil.current_tilemap() == map_zone_2:
+        player_1.x = 26
+    else:
+        player_1.x = 231
+scene.on_overlap_tile(SpriteKind.player, tileUtil.door0, on_overlap_tile)
+
 def on_down_released():
     animation.stop_animation(animation.AnimationTypes.ALL, player_1)
-    player_1.set_image(img("""
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f9991119f22f.
-        f22f999991199f22f
-        f22f999999919f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f222ff99999ff222f
-        f22222fffff22222f
-        f222222222222222f
-        f222222222222222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
+    player_1.set_image(assets.image("""
+        walk_down_1
         """))
 controller.down.on_event(ControllerButtonEvent.RELEASED, on_down_released)
 
@@ -127,53 +38,15 @@ controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
 def on_right_released():
     animation.stop_animation(animation.AnimationTypes.ALL, player_1)
-    player_1.set_image(img("""
-        .....fffffff.....
-        ....f2222222f....
-        ....f22222222f...
-        ...f222222222ff..
-        ffff22222222f11f.
-        feef2222222f9111f
-        feef2222222f1999f
-        feef2222222f9999f
-        feef2222222f9999f
-        feef2222222f9999f
-        feef22222222f99f.
-        feef222222222ff..
-        feef2222222222f..
-        feef2222222222f..
-        feef222222222f...
-        .fff222222222f...
-        ...f222222222f...
-        ....f2222222f....
-        ....f2222222f....
-        ....fffffffff....
+    player_1.set_image(assets.image("""
+        walk_right_1
         """))
 controller.right.on_event(ControllerButtonEvent.RELEASED, on_right_released)
 
 def on_left_released():
     animation.stop_animation(animation.AnimationTypes.ALL, player_1)
-    player_1.set_image(img("""
-        .....fffffff.....
-        ....f2222222f....
-        ...f22222222f....
-        ..ff222222222f...
-        .f11f22222222ffff
-        f1119f2222222feef
-        f9991f2222222feef
-        f9999f2222222feef
-        f9999f2222222feef
-        f9999f2222222feef
-        .f99f22222222feef
-        ..ff222222222feef
-        ..f2222222222feef
-        ..f2222222222feef
-        ...f222222222feef
-        ...f222222222fff.
-        ...f222222222f...
-        ....f2222222f....
-        ....f2222222f....
-        ....fffffffff....
+    player_1.set_image(assets.image("""
+        walk_left_1
         """))
 controller.left.on_event(ControllerButtonEvent.RELEASED, on_left_released)
 
@@ -188,151 +61,75 @@ controller.right.on_event(ControllerButtonEvent.PRESSED, on_right_pressed)
 
 def on_up_released():
     animation.stop_animation(animation.AnimationTypes.ALL, player_1)
-    player_1.set_image(img("""
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f2222222f22f.
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f222ff22222ff222f
-        f22222fffff22222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
+    player_1.set_image(assets.image("""
+        walk_up_1
         """))
 controller.up.on_event(ControllerButtonEvent.RELEASED, on_up_released)
 
 def on_down_pressed():
     animation.run_image_animation(player_1,
-        [img("""
-                .....fffffff.....
-                ...ff2222222ff...
-                ..f22222222222f..
-                .f222fffffff222f.
-                .f22f9991119f22f.
-                f22f999991199f22f
-                f22f999999919f22f
-                f22f999999999f22f
-                f22f999999999f22f
-                f22f999999999f22f
-                f222ff99999ff222f
-                f22222fffff22222f
-                f222222222222222f
-                f222222222222222f
-                f222222222222222f
-                .f222222f222222f.
-                .f222222f222222f.
-                .f222222f222222f.
-                .f222222f222222f.
-                .fffffffffffffff.
-                """),
-            img("""
-                .....fffffff.....
-                ...ff2222222ff...
-                ..f22222222222f..
-                .f222fffffff222f.
-                .f22f9991119f22f.
-                f22f999991199f22f
-                f22f999999919f22f
-                f22f999999999f22f
-                f22f999999999f22f
-                f22f999999999f22f
-                f222ff9999ffff22f
-                f22222ffff2222f2f
-                f2222222f222222ff
-                f2222222f222222f.
-                f2222222f222222f.
-                .fe2222ef222222f.
-                .feeeeeeff2222f..
-                ..feeeef.fffff...
-                ...ffff..........
-                """),
-            img("""
-                .....fffffff.....
-                ...ff2222222ff...
-                ..f22222222222f..
-                .f222fffffff222f.
-                .f22f9991119f22f.
-                f22f999991199f22f
-                f22f999999919f22f
-                f22f999999999f22f
-                f22f999999999f22f
-                f22f999999999f22f
-                f222ff99999ff222f
-                f22222fffff22222f
-                f222222222222222f
-                f222222222222222f
-                f222222222222222f
-                .f222222f222222f.
-                .f222222f222222f.
-                .f222222f222222f.
-                .f222222f222222f.
-                .fffffffffffffff.
-                """),
-            img("""
-                .....fffffff.....
-                ...ff2222222ff...
-                ..f22222222222f..
-                .f222fffffff222f.
-                .f22f9991119f22f.
-                f22f999991199f22f
-                f22f999999919f22f
-                f22f999999999f22f
-                f22f999999999f22f
-                f22f999999999f22f
-                f22ffff9999ff222f
-                f2f2222ffff22222f
-                ff222222f2222222f
-                .f222222f2222222f
-                .f222222f2222222f
-                .f222222fe2222ef.
-                ..f2222ffeeeeeef.
-                ...fffff.feeeef..
-                ..........ffff...
-                """)],
+        assets.animation("""
+            walk_down_animation
+            """),
         200,
         True)
 controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
 
+def on_overlap_tile2(sprite2, location2):
+    global on_dialogue
+    if controller.A.is_pressed():
+        if current_zone == "mz_1":
+            on_dialogue = True
+            
+            def on_start_cutscene():
+                global on_dialogue
+                story.sprite_say_text(player_1, "Already open. . .", 1, 15, story.TextSpeed.SLOW)
+                story.sprite_say_text(player_1, "Obviously.", 1, 15, story.TextSpeed.SLOW)
+                story.sprite_say_text(player_1,
+                    "God forbid I find something useful.",
+                    1,
+                    15,
+                    story.TextSpeed.SLOW)
+                story.cancel_all_cutscenes()
+                on_dialogue = False
+            story.start_cutscene(on_start_cutscene)
+            
+scene.on_overlap_tile(SpriteKind.player,
+    sprites.dungeon.chest_open,
+    on_overlap_tile2)
+
+on_dialogue = False
 player_1: Sprite = None
-scene.set_background_image(assets.image("""
-    Skeld
-    """))
-tiles.set_current_tilemap(tilemap("""
-    level1
-    """))
-player_1 = sprites.create(img("""
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f9991119f22f.
-        f22f999991199f22f
-        f22f999999919f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f222ff99999ff222f
-        f22222fffff22222f
-        f222222222222222f
-        f222222222222222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
-        """),
-    SpriteKind.player)
+current_zone = ""
+map_zone_2: tiles.TileMapData = None
+map_zone_1 = tilemap("""
+    mz_1
+    """)
+map_zone_2 = tilemap("""
+    mz_2
+    """)
+current_zone = "mz_1"
+tiles.set_current_tilemap(map_zone_1)
+player_1 = sprites.create(assets.image("""
+    walk_1
+    """), SpriteKind.player)
+on_dialogue = False
+tileUtil.connect_maps(map_zone_1, map_zone_2, MapConnectionKind.door1)
+tiles.place_on_random_tile(player_1, sprites.dungeon.collectible_insignia)
 player_speed = 200
-controller.move_sprite(player_1)
+controller.move_sprite(player_1, 100, 100)
+
+def on_on_update():
+    if on_dialogue:
+        controller.move_sprite(player_1, 0, 0)
+        animation.stop_animation(animation.AnimationTypes.ALL, player_1)
+    else:
+        controller.move_sprite(player_1, 100, 100)
+game.on_update(on_on_update)
+
+def on_forever():
+    scene.center_camera_at(0, 0)
+    scene.camera_follow_sprite(player_1)
+    music.play(music.string_playable("C5 A B G A F G E ", 115),
+        music.PlaybackMode.UNTIL_DONE)
+forever(on_forever)

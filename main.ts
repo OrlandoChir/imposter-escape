@@ -1,117 +1,26 @@
+namespace SpriteKind {
+    export const Dialogue = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     player_1,
-    [img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f2222222f22f.
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f222ff22222ff222f
-        f22222fffff22222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
-        `,img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f2222222f22f.
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222ffff22f
-        f22f2222ff2222f2f
-        f222ff22f222222ff
-        f22222fff222222f.
-        f2222222f222222f.
-        .fe2222ef222222f.
-        .feeeeeeff2222f..
-        ..feeeef.fffff...
-        ...ffff..........
-        `,img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f2222222f22f.
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f222ff22222ff222f
-        f22222fffff22222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
-        `,img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f2222222f22f.
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22ffff222222f22f
-        f2f2222ff2222f22f
-        ff222222f22ff222f
-        .f222222fff22222f
-        .f222222f2222222f
-        .f222222fe2222ef.
-        ..f2222ffeeeeeef.
-        ...fffff.feeeef..
-        ..........ffff...
-        `],
+    assets.animation`walk_up_animation`,
     200,
     true
     )
 })
+scene.onOverlapTile(SpriteKind.Player, tileUtil.door0, function (sprite, location) {
+    tileUtil.loadConnectedMap(MapConnectionKind.Door1)
+    tiles.placeOnRandomTile(player_1, tileUtil.door0)
+    if (tileUtil.currentTilemap() == map_zone_2) {
+        player_1.x = 26
+    } else {
+        player_1.x = 231
+    }
+})
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, player_1)
-    player_1.setImage(img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f9991119f22f.
-        f22f999991199f22f
-        f22f999999919f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f222ff99999ff222f
-        f22222fffff22222f
-        f222222222222222f
-        f222222222222222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
-        `)
+    player_1.setImage(assets.image`walk_down_1`)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -123,53 +32,11 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, player_1)
-    player_1.setImage(img`
-        .....fffffff.....
-        ....f2222222f....
-        ....f22222222f...
-        ...f222222222ff..
-        ffff22222222f11f.
-        feef2222222f9111f
-        feef2222222f1999f
-        feef2222222f9999f
-        feef2222222f9999f
-        feef2222222f9999f
-        feef22222222f99f.
-        feef222222222ff..
-        feef2222222222f..
-        feef2222222222f..
-        feef222222222f...
-        .fff222222222f...
-        ...f222222222f...
-        ....f2222222f....
-        ....f2222222f....
-        ....fffffffff....
-        `)
+    player_1.setImage(assets.image`walk_right_1`)
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, player_1)
-    player_1.setImage(img`
-        .....fffffff.....
-        ....f2222222f....
-        ...f22222222f....
-        ..ff222222222f...
-        .f11f22222222ffff
-        f1119f2222222feef
-        f9991f2222222feef
-        f9999f2222222feef
-        f9999f2222222feef
-        f9999f2222222feef
-        .f99f22222222feef
-        ..ff222222222feef
-        ..f2222222222feef
-        ..f2222222222feef
-        ...f222222222feef
-        ...f222222222fff.
-        ...f222222222f...
-        ....f2222222f....
-        ....f2222222f....
-        ....fffffffff....
-        `)
+    player_1.setImage(assets.image`walk_left_1`)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -181,146 +48,54 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, player_1)
-    player_1.setImage(img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f2222222f22f.
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f22f222222222f22f
-        f222ff22222ff222f
-        f22222fffff22222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
-        `)
+    player_1.setImage(assets.image`walk_up_1`)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     player_1,
-    [img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f9991119f22f.
-        f22f999991199f22f
-        f22f999999919f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f222ff99999ff222f
-        f22222fffff22222f
-        f222222222222222f
-        f222222222222222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
-        `,img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f9991119f22f.
-        f22f999991199f22f
-        f22f999999919f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f222ff9999ffff22f
-        f22222ffff2222f2f
-        f2222222f222222ff
-        f2222222f222222f.
-        f2222222f222222f.
-        .fe2222ef222222f.
-        .feeeeeeff2222f..
-        ..feeeef.fffff...
-        ...ffff..........
-        `,img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f9991119f22f.
-        f22f999991199f22f
-        f22f999999919f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f222ff99999ff222f
-        f22222fffff22222f
-        f222222222222222f
-        f222222222222222f
-        f222222222222222f
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .f222222f222222f.
-        .fffffffffffffff.
-        `,img`
-        .....fffffff.....
-        ...ff2222222ff...
-        ..f22222222222f..
-        .f222fffffff222f.
-        .f22f9991119f22f.
-        f22f999991199f22f
-        f22f999999919f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f22f999999999f22f
-        f22ffff9999ff222f
-        f2f2222ffff22222f
-        ff222222f2222222f
-        .f222222f2222222f
-        .f222222f2222222f
-        .f222222fe2222ef.
-        ..f2222ffeeeeeef.
-        ...fffff.feeeef..
-        ..........ffff...
-        `],
+    assets.animation`walk_down_animation`,
     200,
     true
     )
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestOpen, function (sprite, location) {
+    if (controller.A.isPressed()) {
+        if (current_zone == "mz_1") {
+            on_dialogue = true
+            story.startCutscene(function () {
+                story.spriteSayText(player_1, "Already open. . .", 1, 15, story.TextSpeed.Slow)
+                story.spriteSayText(player_1, "Obviously.", 1, 15, story.TextSpeed.Slow)
+                story.spriteSayText(player_1, "God forbid I find something useful.", 1, 15, story.TextSpeed.Slow)
+                story.cancelAllCutscenes()
+                on_dialogue = false
+            })
+        }
+    }
+})
+let on_dialogue = false
 let player_1: Sprite = null
-tiles.setCurrentTilemap(tilemap`level4`)
-player_1 = sprites.create(img`
-    .....fffffff.....
-    ...ff2222222ff...
-    ..f22222222222f..
-    .f222fffffff222f.
-    .f22f9991119f22f.
-    f22f999991199f22f
-    f22f999999919f22f
-    f22f999999999f22f
-    f22f999999999f22f
-    f22f999999999f22f
-    f222ff99999ff222f
-    f22222fffff22222f
-    f222222222222222f
-    f222222222222222f
-    f222222222222222f
-    .f222222f222222f.
-    .f222222f222222f.
-    .f222222f222222f.
-    .f222222f222222f.
-    .fffffffffffffff.
-    `, SpriteKind.Player)
+let current_zone = ""
+let map_zone_2: tiles.TileMapData = null
+let map_zone_1 = tilemap`mz_1`
+map_zone_2 = tilemap`mz_2`
+current_zone = "mz_1"
+tiles.setCurrentTilemap(map_zone_1)
+player_1 = sprites.create(assets.image`walk_1`, SpriteKind.Player)
+on_dialogue = false
+tileUtil.connectMaps(map_zone_1, map_zone_2, MapConnectionKind.Door1)
+tiles.placeOnRandomTile(player_1, sprites.dungeon.collectibleInsignia)
 let player_speed = 200
-controller.moveSprite(player_1)
+controller.moveSprite(player_1, 100, 100)
+game.onUpdate(function () {
+    if (on_dialogue) {
+        controller.moveSprite(player_1, 0, 0)
+        animation.stopAnimation(animation.AnimationTypes.All, player_1)
+    } else {
+        controller.moveSprite(player_1, 100, 100)
+    }
+})
 forever(function () {
     scene.centerCameraAt(0, 0)
     scene.cameraFollowSprite(player_1)
+    music.play(music.stringPlayable("C5 A B G A F G E ", 147), music.PlaybackMode.UntilDone)
 })
