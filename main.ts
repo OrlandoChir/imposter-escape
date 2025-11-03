@@ -160,8 +160,8 @@ game.onUpdate(function () {
     }
 })
 game.onUpdateInterval(5000, function () {
-    tileUtil.createSpritesOnTiles(sprites.dungeon.collectibleRedCrystal, assets.image`Ghost2`, SpriteKind.Enemy)
-    tileUtil.createSpritesOnTiles(sprites.dungeon.collectibleBlueCrystal, assets.image`Ghost2`, SpriteKind.Enemy)
+    tileUtil.createSpritesOnTiles(sprites.dungeon.collectibleRedCrystal, assets.image`Ghost`, SpriteKind.Enemy)
+    tileUtil.createSpritesOnTiles(sprites.dungeon.collectibleBlueCrystal, assets.image`Ghost`, SpriteKind.Enemy)
 })
 forever(function () {
     scene.centerCameraAt(0, 0)
