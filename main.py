@@ -31,31 +31,43 @@ def on_overlap_tile(sprite2, location):
         player_1.x = 231
 scene.on_overlap_tile(SpriteKind.player, tileUtil.door0, on_overlap_tile)
 
+def on_b_pressed():
+    if info.score() < 10:
+        info.set_score(10)
+        music.play(music.melody_playable(music.beam_up),
+            music.PlaybackMode.UNTIL_DONE)
+controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
+
 def on_a_pressed():
     global bullet
-    bullet = sprites.create_projectile_from_sprite(img("""
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . 4 4 . . . . . . .
-            . . . . . . 4 5 5 4 . . . . . .
-            . . . . . . 2 5 5 2 . . . . . .
-            . . . . . . . 2 2 . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
-            """),
-        player_1,
-        x_direction,
-        y_direction)
-    music.play(music.melody_playable(music.pew_pew),
-        music.PlaybackMode.UNTIL_DONE)
+    if info.score() > 0:
+        bullet = sprites.create_projectile_from_sprite(img("""
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . 4 4 . . . . . . .
+                . . . . . . 4 5 5 4 . . . . . .
+                . . . . . . 2 5 5 2 . . . . . .
+                . . . . . . . 2 2 . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
+                """),
+            player_1,
+            x_direction,
+            y_direction)
+        info.change_score_by(-1)
+        music.play(music.melody_playable(music.pew_pew),
+            music.PlaybackMode.UNTIL_DONE)
+    else:
+        music.play(music.melody_playable(music.big_crash),
+            music.PlaybackMode.UNTIL_DONE)
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
 def on_down_released():
@@ -198,6 +210,7 @@ player_1 = sprites.create(assets.image("""
     walk_1
     """), SpriteKind.player)
 info.set_life(1)
+info.set_score(10)
 on_dialogue = False
 tileUtil.connect_maps(map_zone_1, map_zone_2, MapConnectionKind.door1)
 tiles.place_on_random_tile(player_1, sprites.dungeon.collectible_insignia)
