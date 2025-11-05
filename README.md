@@ -16,4 +16,4 @@ Dividamos los escenarios:
 * 2: Tiene como objetivo simplemente ponernos en el lugar de inicio del juego. 
 * 3: Supervivencia; Consiste de un mapa amplio con spawn de enemigos y un temporizador. El objetivo es sobrevivir hasta que éste se acabe (5 minutos).
 
-![Help_Menu.jpg](https://raw.githubusercontent.com/OrlandoChir/imposter-escape/refs/heads/master/Help_Menu.jpg)
+![Help_Menu.jpg](https://raw.githubusercontent.com/OrlandoChir/imposter-escape/refs/heads/master/Help_Menu.png)
