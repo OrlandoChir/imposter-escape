@@ -1,26 +1,19 @@
- 
+###Imposter's Escape
+##Lore:
+En una mazmorra, encerrado por quién sabe qué motivo, Red solo tiene a su disposición dos herramientas: Una pistola y sus piernas.
+Lo que parece ser una mazmorra no lo es en realidad, sino la mente de Red; después de haber caído inconsciente al ser arrojado de la nave antes de dejar el planeta Polus, éste pierde la memoria, olvidando su desastrozo pasado y siguiendo un camino manchado en sangre hacia sus recuerdos perdidos antes de darse cuenta que, en realidad, dicho camino había sido creado por él: Todas sus víctimas así como su propia identidad alienígena son lo único que puede encontrar en su viaje para recuperar sus recuerdos. 
+En el primer acto Red no sabe ni recuerda cómo usar sus habilidades anómalas por lo que éste recurre a una pistola con un máximo de 10 balas por cargador.
 
+##Gameplay:
+#Controles
+* Usar cruceta de movimiento para moverte.
+* Botón A para disparar.
+* Botón B para recargar.
+* Dispones de 10 balas por recarga.
+  
+Dividamos los escenarios:
+* l: Menú en el cual, al ir a la derecha se le indicará al jugador de los controles.
+* 2: Tiene como objetivo simplemente ponernos en el lugar de inicio del juego. 
+* 3: Supervivencia; Consiste de un mapa amplio con spawn de enemigos y un temporizador. El objetivo es sobrevivir hasta que éste se acabe (5 minutos).
 
-> Open this page at [https://orlandochir.github.io/imposter-escape/](https://orlandochir.github.io/imposter-escape/)
-
-## Use as Extension
-
-This repository can be added as an **extension** in MakeCode.
-
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/orlandochir/imposter-escape** and import
-
-## Edit this project
-
-To edit this repository in MakeCode.
-
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/orlandochir/imposter-escape** and click import
-
-#### Metadata (used for search, rendering)
-
-* for PXT/arcade
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+* 
